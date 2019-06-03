@@ -1,0 +1,7 @@
+{% extends 'alimentos/layout.html.twig' %}
+
+ {% block contenido %}
+
+ {% include 'alimentos/_tablaAlimentos.html.twig' with {'alimentos': alimentos} %}
+
+ {% endblock %}

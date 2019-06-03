@@ -1,0 +1,85 @@
+Se deberán crear y completar las secciones de Buscar por Energía y Búsqueda combinada que aparecen en el menú principal.
+Ejercicio 2. (1punto)
+
+Añade al menú una opción para mostrar un listado con todos los alimentos con enlaces a los artículos correspodientes de la wikipedia y construye dicha funcionalidad.
+
+Consejo
+
+Los artículos de la wikipedia presentan la siguiente URL:
+
+http://es.wikipedia.org/wiki/{término}, teniendo en cuenta las tildes, de manera que el artículo correspondiente a la fruta limón será: http://es.wikipedia.org/wiki/limón, puedes construir una tabla con dos columnas, en la primera muestras el nombre del alimento y en la segunda el enlace a la wikipedia
+Ejercicio 3. (1punto)
+
+Enriquece los enlaces del ejercicio anterior con cajas modales.
+
+Consejo
+
+Las “pobres” interfaces HTML de las aplicaciones web pueden “enriquecerse” gracias al uso de javascript en la parte del cliente. En este ejercicio se propone al estudiante que convierta los enlaces del ejercicio anterior de manera que cuando se pique en ellos el enlace aparezca en una ventana situada encima de la página que muestra los enlaces, es decir, en una ventana modal. Esto se consigue utilizando javascript. Vamos a esbozar una posible solución que te ayude a realizar el ejercicio:
+
+Descarga las siguientes librerías javascript:
+
+    jquery, http://jqueryjs.googlecode.com/files/jquery-1.3.2.min.js
+    colorbox, http://colorpowered.com/colorbox/colorbox.zip
+
+El siguiente código convierte todos los enlaces cuya clase (atributo class del elemento HTML) sea “cajamodal”:
+
+  <script>
+  $(document).ready(function(){
+
+    $(".cajamodal").colorbox();
+  });
+  </script>
+Para que dicho ejemplo funcione, el documento HTML debe incluir las librerías jquery-1.3.2.min.js y colorbox.js (en ese orden). Además, si quieres ver bien la caja modal, debes incluir la hoja de estilo colorbox.css que viene también en el archivo colorbox.zip que acabas de descargar. Si quieres más ayuda mira el código HTML de esta dirección:
+
+http://colorpowered.com/colorbox/core/example1/index.html
+
+Tu tarea consiste en ubicar en los lugares que corresponda las librerías y el código anterior para que los enlaces a los artículos de la wikipedia del ejercicio anterior se vean en caja modal.
+Ejercicio 4 (1punto)
+
+Añade al listado de alimentos del ejercicio 2 una columna más donde ubicarás un enlace que proporcione un archivo XML con los datos del alimento.
+
+Consejo
+
+Un posible formato para el fichero XML que esta funcionalidad debe entregar como respuesta puede ser (atención, cualquier parecido con los datos dietéticos reales de este ejemplo es pura casualidad) :
+
+<?xml version="1.0"?>
+<alimento>
+  <nombre>limón</nombre>
+  <energia>100</energia>
+  <proteinas>150</proteinas>
+  <hc>45</hc>
+  <fibra>24</fibra>
+  <grasa>10</grasa>
+</alimento>
+
+Además, para enviar como respuesta un XML en lugar del HTML, puedes utilizar la función header() de PHP en la propia acción que implemente esta funcionalidad, y terminar dicha acción con un exit, de manera que no se utilice la plantilla ni el layout que dan lugar al HTML. Mira la documentación de la función header() en el sitio web de PHP. También podrías mejorar el sistema de la vista, agregando la posibilidad de utilizar, además del HTML, un layout XML. Esta última solución es más elegante pero más compleja de implementar (no mucho más compleja).
+Ejercicio 5 (1punto)
+
+Crea una funcionalidad que permita imprimir un informe en pdf, por ejemplo el listado de alimentos. Descubre las funcionalidades principales de la librería FPDF
+
+http://maryitsv.blogspot.com.es/2014/11/instalacion-de-tcpdf-en-symfony-24.html
+Ejercicio 6 (1punto)
+
+Construye una funcionalidad que permita borrar un alimento determinado. Podrás utilizarla al mostrarse el listado, en el resultado de una búsqueda concreta, etc
+Ejercicio 7 (1punto)
+
+Construye una funcionalidad que permita editar las características de un alimento determinado ya existente en la base de daros. Podrás utilizarla al mostrarse el listado, en el resultado de una búsqueda concreta, etc
+Ejercicio 8 (1punto)
+
+Crea una sección dentro del proyecto denominada admin (en el menú principal estará accesible) que permita mediante un login de usuario (solo existirá uno admin con password admin) el acceso al listado de alimentos tal como muestra el listado principal del proyecto, con funciones para borrar y editar cada alimento. Elimina la posibilidad de borrar y editar en el proyecto, sin estar logado como administrador.
+
+https://librosweb.es/libro/symfony_2_x/capitulo_13/usando_el_tipico_formulario_de_acceso.html
+
+Ejercicio 9 (2 puntos)
+
+Despliega el proyecto en un hosting por ejemplo clouding.io.
+
+- En primer lugar realiza la instalación de symfony mediante el instalador automático, indicando un nombre de carpeta para alojar los archivos. Por ejemplo carpeta symfony.
+
+- Modifica el archivo de configuración para que se conecte a la base de datos y credenciales (usuario/password).
+
+- Sube a la carpeta src la carpeta con archivos modificados de alimentos. 
+
+- Añade en el archivo  en el routing.yml las entradas necesarias para que funcione el bundle
+
+Por último prueba el acceso y que funcionan correctamente todos los apartados.

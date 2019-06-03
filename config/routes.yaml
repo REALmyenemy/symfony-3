@@ -1,0 +1,24 @@
+app_alimentos_inicio:
+    path: /
+    controller: App\Controller\AlimentosController::inicio
+app_alimentos_inicio:
+    path: /inicio
+    controller: App\Controller\AlimentosController::inicio
+app_alimentos_listar:
+    path: /listar
+    controller: App\Controller\AlimentosController::listar
+app_alimentos_insertar:
+    path: /insertar
+    controller: App\Controller\AlimentosController::insertar
+app_alimentos_buscar:
+    path: /buscarPorNombre
+    controller: App\Controller\AlimentosController::buscarPorNombre
+app_alimentos_buscarEnergia:
+    path: /buscarPorEnergia
+    controller: App\Controller\AlimentosController::buscarPorEnergia
+app_alimentos_buscarCombinada:
+    path: /buscarCombinada
+    controller: App\Controller\AlimentosController::buscarCombinada
+app_alimentos_ver:
+    path: /ver
+    controller: App\Controller\AlimentosController::ver

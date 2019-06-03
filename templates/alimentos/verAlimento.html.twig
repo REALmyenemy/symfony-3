@@ -1,0 +1,29 @@
+{% extends 'alimentos/layout.html.twig' %}
+
+  {% block contenido %}
+
+  <table>
+      <tr>
+          <th>alimento (por 100g)</th>
+          <td>energia</td>
+          <td>proteina</td>
+		  <td>hidratocarbono</td>
+		  <td>fibra</td>
+		  <td>grasatotal</td>
+		  <td>calificacion</td>
+      </tr>
+      
+      <tr>
+          <td>{{ nombre }}</a></td>
+          <td>{{ energia }}</td>
+          <td>{{ proteina }}</td>
+		  <td>{{ hidratocarbono }}</td>
+		  <td>{{ fibra }}</td>
+		  <td>{{ grasatotal }}</td>
+		  <td>{{ calificacion }}</td>
+      </tr>
+      
+
+  </table>
+
+  {% endblock %}
