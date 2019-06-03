@@ -6,23 +6,19 @@
         <title>{% block title %}Alimentos symfony{% endblock %}</title>
     </head>
     <body>
-        {% block body %}
-		{% endblock %}
-		{% block stylesheets %}
-			<link href="{{ asset('/css/colorbox.css') }}" type="text/css" rel="stylesheet" />
-		{% endblock %}
-        {% block javascripts %}
-		<script src="{{ asset('/js/jquery-3.4.1.js') }}"></script>
-		<script src="{{ asset('/js/jquery.colorbox.js') }}"></script>
-		<script>
-			$(document).ready(function(){
-
-				$(".cajamodal").colorbox();
-			});
-		</script>
-		{% endblock %}
+        {% block body %}{% endblock %}
+		{% block stylesheets %}{% endblock %}
+        {% block javascripts %}{% endblock %}
     </body>
 	
-	
-	
+	<link href="{{ asset('/css/colorbox.css') }}" type="text/css" rel="stylesheet" />
+	<script src="{{ asset('/js/jquery-3.4.1.js') }}"></script>
+	<script src="{{ asset('/js/jquery.colorbox.js') }}"></script>
+	<script>
+		$(document).ready(function(){
+
+			$(".cajamodal").colorbox({iframe:true, width:"75%",height:"75%"});
+			
+		});
+	</script>
 </html>
