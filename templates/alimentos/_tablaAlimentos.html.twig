@@ -3,12 +3,14 @@
           <th>alimento (por 100g)</th>
           <th>energía (Kcal)</th>
           <th>grasa (g)</th>
+		  <th>wiki</th>
       </tr>
       {% for alimento in alimentos %}
       <tr>
           <td>{{ alimento.nombre }}</td>
           <td>{{ alimento.energia }}</td>
           <td>{{ alimento.grasatotal }}</td>
+		  <td><a href="http://es.wikipedia.org/wiki/{{ alimento.nombre }}">wiki</a></td>
       </tr>
       {% endfor %}
 

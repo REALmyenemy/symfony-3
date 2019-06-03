@@ -74,6 +74,7 @@
 
 			return $alimentos;
 		}
+		
 		public function buscarAlimentosCombinada($energia,$nombre)
 		{
 			$energia = htmlspecialchars($energia);

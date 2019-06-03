@@ -108,6 +108,26 @@ class AlimentosController extends AbstractController
 
 	}
 
+	public function busquedaCombinada()
+	{
+		$params = array(
+			'nombre' => '',
+			'energia' => '',
+			'resultado' => array()
+		);
+
+		$m = new Model(Config::$mvc_bd_nombre, Config::$mvc_bd_usuario,	Config::$mvc_bd_clave, Config::$mvc_bd_hostname);
+
+		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+			$params['nombre'] = $_POST['nombre'];
+			$params['energia'] = $_POST['energia'];
+			$params['resultado'] = $m->buscarAlimentosCombinada($_POST['energia'],$_POST['nombre']);
+		}
+
+		return	$this->render('alimentos/busquedaCombinada.html.twig',$params);
+
+	}
+
 	public function ver()
 	{
 		if (!isset($_GET['id'])) {
