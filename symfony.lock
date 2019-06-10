@@ -54,6 +54,9 @@
             "./src/Migrations/.gitignore"
         ]
     },
+    "doctrine/event-manager": {
+        "version": "v1.0.0"
+    },
     "doctrine/inflector": {
         "version": "v1.2.0"
     },
@@ -68,6 +71,12 @@
     },
     "doctrine/orm": {
         "version": "v2.5.14"
+    },
+    "doctrine/persistence": {
+        "version": "1.1.1"
+    },
+    "doctrine/reflection": {
+        "version": "v1.0.0"
     },
     "easycorp/easy-log-handler": {
         "version": "1.0",
@@ -308,8 +317,14 @@
     "symfony/polyfill-intl-icu": {
         "version": "v1.10.0"
     },
+    "symfony/polyfill-intl-idn": {
+        "version": "v1.11.0"
+    },
     "symfony/polyfill-mbstring": {
         "version": "v1.10.0"
+    },
+    "symfony/polyfill-php72": {
+        "version": "v1.11.0"
     },
     "symfony/process": {
         "version": "v3.4.22"
@@ -444,11 +459,17 @@
     "symfony/yaml": {
         "version": "v3.4.22"
     },
+    "tecnickcom/tcpdf": {
+        "version": "6.2.26"
+    },
     "twig/twig": {
         "version": "v2.6.2"
     },
     "webmozart/assert": {
         "version": "1.4.0"
+    },
+    "whiteoctober/tcpdf-bundle": {
+        "version": "dev-master"
     },
     "zendframework/zend-code": {
         "version": "3.1.0"

@@ -6,7 +6,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Model\Model;
 use App\Config\Config;
-
+use Fpdf\Fpdf;
 
 class AlimentosController extends AbstractController
 {
@@ -133,16 +133,51 @@ class AlimentosController extends AbstractController
 		if (!isset($_GET['id'])) {
 			throw new Exception('Página no encontrada');
 		}
+		else
+			
+			$id = $_GET['id'];
 
-		$id = $_GET['id'];
+			$m = new Model(Config::$mvc_bd_nombre, Config::$mvc_bd_usuario,	Config::$mvc_bd_clave, Config::$mvc_bd_hostname);
 
-		$m = new Model(Config::$mvc_bd_nombre, Config::$mvc_bd_usuario,	Config::$mvc_bd_clave, Config::$mvc_bd_hostname);
+			$alimento = $m->dameAlimento($id);
 
-		$alimento = $m->dameAlimento($id);
+			$params = $alimento;
+			
 
-		$params = $alimento;
+			if (isset($_GET['ext']))
+			{
+				switch(strtolower($_GET['ext']))
+				{
+					case 'xml':
+						$response=$this->render('alimentos/verAlimento.xml.twig', $params);
+						$response->headers->set('Content-Type', 'text/xml');
 
-		return $this->render('alimentos/verAlimento.html.twig', $params);
+						break;
+					case 'pdf':
+					// $pdf = new \FPDF;
+					// $pdf = new Fpdf();
+					// $pdf = new FPDF();
+					$pdf = $this->get("white_october.tcpdf")->create();
+					// $pdf = $this->get("TCPDFController.php")->create('vertical', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+					$pdf->AddPage();
+					$response = new Response(
+						$pdf->Output("archivo.pdf",'I'),
+						Response::HTTP_OK,
+						array('content-type' => 'application/pdf')
+					);
+						
+						break;
+					default:
+						throw new Exception('Página no encontrada');
+				}
+			}
+			else
+			{
+				$response=$this->render('alimentos/verAlimento.html.twig', $params);
+			}
+
+			return $response;
+
 
 	}
 

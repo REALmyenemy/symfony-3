@@ -15,7 +15,8 @@
           <td>{{ alimento.energia }}</td>
           <td>{{ alimento.grasatotal }}</td>
 		  <td><a href="http://es.wikipedia.org/wiki/{{ alimento.nombre }}" class="cajamodal">wiki</a></td>
-		  {# <td><a href="http://es.wikipedia.org/wiki/Cuatro" class="cajamodal">wiki</a></td> #}
+		  <td><a href="{{ path('app_alimentos_ver', {'id': alimento.id}) }}&ext=xml" target="_blank">Ver en XML</a></td>
+		  <td><a href="{{ path('app_alimentos_ver', {'id': alimento.id}) }}&ext=pdf" target="_blank">Ver en pdf</a></td>
       </tr>
       {% endfor %}
 	  
