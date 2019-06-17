@@ -45,9 +45,9 @@ class AlimentosController extends AbstractController
 		'nombre' => '',
 		'energia' => '',
 		'proteina' => '',
-		'hc' => '',
+		'hidratocarbono' => '',
 		'fibra' => '',
-		'grasa' => '',
+	'grasatotal' => '',
 		'calificacion'=>''
 		);
 
@@ -56,7 +56,7 @@ class AlimentosController extends AbstractController
 		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 			// comprobar campos formulario
-			if ($m->insertarAlimento($_POST['nombre'], $_POST['energia'],$_POST['proteina'], $_POST['hc'], $_POST['fibra'], $_POST['grasa'], $_POST['calificacion']))
+			if ($m->insertarAlimento($_POST['nombre'], $_POST['energia'],$_POST['proteina'], $_POST['hidratocarbono'], $_POST['fibra'], $_POST['grasatotal'], $_POST['calificacion']))
 			{
 				$params['mensaje'] = 'Alimento insertado correctamente';
 			}
@@ -66,9 +66,9 @@ class AlimentosController extends AbstractController
 				'nombre' => $_POST['nombre'],
 				'energia' => $_POST['energia'],
 				'proteina' => $_POST['proteina'],
-				'hc' => $_POST['hc'],
+				'hidratocarbono' => $_POST['hidratocarbono'],
 				'fibra' => $_POST['fibra'],
-				'grasa' => $_POST['grasa'],
+				'grasatotal' => $_POST['grasatotal'],
 				'calificacion' => $_POST['calificacion'],
 				);
 				$params['mensaje'] = 'No se ha podido insertar el alimento. Revisa el formulario';

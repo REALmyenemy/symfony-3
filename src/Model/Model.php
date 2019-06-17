@@ -144,8 +144,6 @@
 
 		public function insertarAlimento($n, $e, $p, $hc, $f, $g, $c)
 		{
-			if ($c=="A"||$c=="B"||$c=="C"||$c=="D"||$c=="") //No quiere coger la función
-			{
 				$n = htmlspecialchars($n);
 				$e = htmlspecialchars($e);
 				$p = htmlspecialchars($p);
@@ -161,9 +159,7 @@
 				$result = mysqli_query($this->conexion,$sql);
 
 				return $result;
-			}
-			else
-				return false;
+			
 		}
 
 		public function editarAlimento($n, $e, $p, $hc, $f, $g, $c,$i)
