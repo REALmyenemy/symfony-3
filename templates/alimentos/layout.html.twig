@@ -17,6 +17,7 @@
 	<a href="{{ path('app_alimentos_buscar')}}">buscar por nombre</a> |
 	<a href="{{ path('app_alimentos_buscarEnergia')}}">buscar por energía</a> |
 	<a href="{{ path('app_alimentos_buscarCombinada')}}">busqueda combinada</a> |
+	{% if "app.session.usu"!="admin" %}	<a href="{{ path('app_alimentos_logIn')}}">log in</a> {% endif %}
 	<hr/>
 </div>
 

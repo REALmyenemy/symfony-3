@@ -21,8 +21,7 @@
 		  <td><a href="http://es.wikipedia.org/wiki/{{ alimento.nombre }}" class="cajamodal">wiki</a></td>
 		  <td><a href="{{ path('app_alimentos_ver', {'id': alimento.id}) }}&ext=xml" target="_blank">Ver en XML</a></td>
 		  <td><a href="{{ path('app_alimentos_ver', {'id': alimento.id}) }}&ext=pdf" target="_blank">Ver en pdf</a></td>
-          <td><a href="{{ path('app_alimentos_editar', {'id': alimento.id}) }}">&nbsp;Editar</a></td>
-		  <td><a href="{{ path('app_alimentos_borrar', {'id': alimento.id}) }}">&nbsp;X</a></td>
+
       </tr>
       {% endfor %}
 	  

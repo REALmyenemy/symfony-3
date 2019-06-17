@@ -1,0 +1,37 @@
+{% extends 'alimentos/layout.html.twig' %}
+
+ {% block contenido %}
+
+{% if mensaje is defined %}
+<b><span style="color: red;">{{ mensaje }}</span></b>
+{% endif %}
+<br/>
+<form name="formEditar" action="{{ path('app_alimentos_editar') }}" method="POST">
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Energía (Kcal)</th>
+            <th>Proteina (g)</th>
+            <th>H. de carbono (g)</th>
+            <th>Fibra (g)</th>
+            <th>Grasa total (g)</th>
+			<th>Calificación</th>
+        </tr>
+        <tr>
+            <td><input type="text" name="id" value="{{ id }}" /></td>
+            <td><input type="text" name="nombre" value="{{ nombre }}" /></td>
+            <td><input type="text" name="energia" value="{{ energia }}" /></td>
+            <td><input type="text" name="proteina" value="{{ proteina }}" /></td>
+            <td><input type="text" name="hidratocarbono" value="{{ hidratocarbono }}" /></td>
+            <td><input type="text" name="fibra" value="{{ fibra }}" /></td>
+            <td><input type="text" name="grasatotal" value="{{ grasatotal }}" /></td>
+			<td><input type="text" name="calificacion" value="{{ calificacion }}" /></td>
+        </tr>
+
+    </table>
+    <input type="submit" value="modificar" name="editar" />
+</form>
+* Los valores deben referirse a 100 g del alimento
+
+{% endblock %}

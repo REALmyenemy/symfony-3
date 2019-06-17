@@ -36,3 +36,12 @@ body {
 	width: auto;
 	min-height:400px;
   }
+  table,tr,th,td
+  {
+	  border:solid 1px black;
+  }
+  input
+  {
+	  border:none;
+  }
+  

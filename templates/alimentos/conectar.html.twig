@@ -1,0 +1,12 @@
+{% extends 'alimentos/layout.html.twig' %}
+
+{% block contenido %}
+<b><span style="color: red;">{{ mensaje }}</span></b>
+<form method="post" action="{{ path('app_alimentos_logIn') }}">
+	<h1>Conectarse</h1>
+	<label for="usuario">Usuario:&nbsp;</label><input type="text" id="usuario" name="usuario" maxlength="10"/><br />
+	<label for="pass">Contrase&ntilde;a:&nbsp;</label><input type="password" id="pass"  name="pass" /><br />
+	<input type="reset" value="Reiniciar" />
+	<input type="submit" value="Conectarse" />
+</form>
+{% endblock %}

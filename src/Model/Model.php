@@ -1,6 +1,8 @@
 <?php
 
+
 	namespace App\Model;
+	
 	class Model
 	{
 		protected $conexion;
@@ -109,7 +111,6 @@
 			return $usuarios;
 		}
 
-
 		public function dameAlimento($id)
 		{
 			$id = htmlspecialchars($id);
@@ -123,6 +124,21 @@
 
 			return $row;
 
+		}
+
+		public function pdfTest($container)
+		{
+			// $pdf = $container->get("white_october.tcpdf")->create();
+
+			// $pdf->AddPage();
+			// $response = new Response(
+			// 	$pdf->Output("archivo.pdf",'I'),
+			// 	Response::HTTP_OK,	array('content-type' => 'application/pdf')
+			// );
+			$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+
+
+			return $pdf;
 		}
 
 
@@ -148,6 +164,37 @@
 			}
 			else
 				return false;
+		}
+
+		public function editarAlimento($n, $e, $p, $hc, $f, $g, $c,$i)
+		{
+			$n = htmlspecialchars($n);
+			$e = htmlspecialchars($e);
+			$p = htmlspecialchars($p);
+			$hc = htmlspecialchars($hc);
+			$f = htmlspecialchars($f);
+			$g = htmlspecialchars($g);
+			$c = htmlspecialchars($c);
+
+			$sql = "update alimentos set
+			nombre='".$n."',
+			energia=".$e.",
+			proteina=".$p.",
+			hidratocarbono=".$hc.",
+			fibra=".$f.",
+			grasatotal=".$g.",
+			calificacion='".$c."'
+			where id=".$i;
+
+			$result = mysqli_query($this->conexion,$sql);
+
+			return $result;
+		
+		}
+	
+		public function borrarAlimento($id)
+		{
+			$result = mysqli_query($this->conexion, "delete from alimentos where id=".$id);
 		}
 
 		public function validarDatos($n, $e, $p, $hc, $f, $g, $c)

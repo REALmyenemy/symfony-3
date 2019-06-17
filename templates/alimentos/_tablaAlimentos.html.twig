@@ -11,6 +11,8 @@
           <td>{{ alimento.energia }}</td>
           <td>{{ alimento.grasatotal }}</td>
 		  <td><a href="http://es.wikipedia.org/wiki/{{ alimento.nombre }}">wiki</a></td>
+          <td><a href="{{ path('app_alimentos_editar', {'id': alimento.id}) }}">&nbsp;Editar</a></td>
+          <td><a href="{{ path('app_alimentos_borrar', {'id': alimento.id}) }}">&nbsp;X</a></td>
       </tr>
       {% endfor %}
 

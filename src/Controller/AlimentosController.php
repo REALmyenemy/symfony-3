@@ -8,6 +8,8 @@ use App\Model\Model;
 use App\Config\Config;
 use Fpdf\Fpdf;
 
+session_start();
+
 class AlimentosController extends AbstractController
 {
 
@@ -29,8 +31,10 @@ class AlimentosController extends AbstractController
 		$params = array(
 			'alimentos' => $m->dameAlimentos(),
 		);
-
-		return $this->render('alimentos/listar.html.twig', $params);
+		if (isset($_SESSION["usu"]))
+			return $this->render('alimentos/listar.html.twig', $params);
+		else
+			return $this->render('alimentos/listarB.html.twig', $params);
 	}
 
 	public function insertar()
@@ -70,6 +74,46 @@ class AlimentosController extends AbstractController
 		}
 
 		return $this->render('alimentos/formInsertar.html.twig', $params);
+
+	}
+
+	public function editar()
+	{
+		if (isset($_SESSION["usu"])){
+		$m = new Model(Config::$mvc_bd_nombre, Config::$mvc_bd_usuario,	Config::$mvc_bd_clave, Config::$mvc_bd_hostname);
+
+		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+		$id = $_GET['id'];
+
+		$alimento = $m->dameAlimento($id);
+
+		$params = $alimento;
+		return $this->render('alimentos/formEditar.html.twig', $params);
+		}
+		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+			// comprobar campos formulario
+			if ($m->editarAlimento($_POST['nombre'], $_POST['energia'],$_POST['proteina'],	$_POST['hidratocarbono'],$_POST['fibra'],$_POST['grasatotal'],$_POST['calificacion'],$_POST['id']))
+			{
+				return $this->redirectToRoute('app_alimentos_listar');
+			}
+			else
+			{
+				$params = array(
+				'nombre' => $_POST['nombre'],
+				'energia' => $_POST['energia'],
+				'proteina' => $_POST['proteina'],
+				'hidratocarbono' => $_POST['hidratocarbono'],
+				'fibra' => $_POST['fibra'],
+				'grasatotal' => $_POST['grasatotal'],
+				'calificacion' => $_POST['calificacion'],
+				'id' => $_POST['id'],
+				);
+				$params['mensaje'] = 'No se ha podido insertar el alimento. Revisa el formulario';
+			}
+		}
+
+		}
 
 	}
 
@@ -128,6 +172,20 @@ class AlimentosController extends AbstractController
 
 	}
 
+	public function borrar()
+	{
+		if (!isset($_GET['id'])||!isset($_SESSION["usu"]))
+		{
+			throw new Exception('Página no encontrada');
+		}
+		else
+		{
+			$m = new Model(Config::$mvc_bd_nombre, Config::$mvc_bd_usuario,	Config::$mvc_bd_clave, Config::$mvc_bd_hostname);
+			$m->borrarAlimento($_GET['id']);
+			return $this->redirectToRoute('app_alimentos_listar');
+		}
+	}
+
 	public function ver()
 	{
 		if (!isset($_GET['id'])) {
@@ -154,17 +212,7 @@ class AlimentosController extends AbstractController
 
 						break;
 					case 'pdf':
-					// $pdf = new \FPDF;
-					// $pdf = new Fpdf();
-					// $pdf = new FPDF();
-					$pdf = $this->get("white_october.tcpdf")->create();
-					// $pdf = $this->get("TCPDFController.php")->create('vertical', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
-					$pdf->AddPage();
-					$response = new Response(
-						$pdf->Output("archivo.pdf",'I'),
-						Response::HTTP_OK,
-						array('content-type' => 'application/pdf')
-					);
+						$pdf=$m->pdfTest($this->render('alimentos/verAlimento.html.twig', $params));
 						
 						break;
 					default:
@@ -177,10 +225,28 @@ class AlimentosController extends AbstractController
 			}
 
 			return $response;
-
-
 	}
 
- 
+	public function doLogin()
+	{
+		if ($_SERVER['REQUEST_METHOD'] == 'POST')
+		{
+			if (isset($_POST['usuario'])&&isset($_POST['pass']))
+				if ($_POST['usuario']=="admin"&&$_POST['pass']=="admin")
+				{
+					$_SESSION["usu"]="admin";
+					$session = $this->get('session');
+					$session->set('usu', 'admin');
+					return $this->inicio();
+				}
+				else
+					$response=$this->render('alimentos/conectar.html.twig', array('mensaje' => 'Usuario/contraseña equivocado/s'));
+			else
+				$response=$this->render('alimentos/conectar.html.twig', array('mensaje' => 'Introduce usuario y contraseña'));
+		}
+		else
+			$response=$this->render('alimentos/conectar.html.twig', array('mensaje' => ''));
+		return $response;
+	}
 
 }
