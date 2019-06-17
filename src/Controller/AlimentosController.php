@@ -8,7 +8,9 @@ use App\Model\Model;
 use App\Config\Config;
 use Fpdf\Fpdf;
 
-session_start();
+if(!isset($_SESSION)) {
+	session_start();
+}
 
 class AlimentosController extends AbstractController
 {
