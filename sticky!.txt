@@ -1,17 +1,12 @@
 Ejercicio 5 (1punto)
 
-Crea una funcionalidad que permita imprimir un informe en pdf, por ejemplo el listado de alimentos. Descubre las funcionalidades principales de la librería FPDF
+Crea una funcionalidad que permita imprimir un informe en pdf, por ejemplo el listado de alimentos. Descubre las funcionalidades principales de la librerï¿½a FPDF
 
 http://maryitsv.blogspot.com.es/2014/11/instalacion-de-tcpdf-en-symfony-24.html
-Ejercicio 6 (1punto)
 
-Construye una funcionalidad que permita borrar un alimento determinado. Podrás utilizarla al mostrarse el listado, en el resultado de una búsqueda concreta, etc
-Ejercicio 7 (1punto)
-
-Construye una funcionalidad que permita editar las características de un alimento determinado ya existente en la base de daros. Podrás utilizarla al mostrarse el listado, en el resultado de una búsqueda concreta, etc
 Ejercicio 8 (1punto)
 
-Crea una sección dentro del proyecto denominada admin (en el menú principal estará accesible) que permita mediante un login de usuario (solo existirá uno admin con password admin) el acceso al listado de alimentos tal como muestra el listado principal del proyecto, con funciones para borrar y editar cada alimento. Elimina la posibilidad de borrar y editar en el proyecto, sin estar logado como administrador.
+Crea una secciï¿½n dentro del proyecto denominada admin (en el menï¿½ principal estarï¿½ accesible) que permita mediante un login de usuario (solo existirï¿½ uno admin con password admin) el acceso al listado de alimentos tal como muestra el listado principal del proyecto, con funciones para borrar y editar cada alimento. Elimina la posibilidad de borrar y editar en el proyecto, sin estar logado como administrador.
 
 https://librosweb.es/libro/symfony_2_x/capitulo_13/usando_el_tipico_formulario_de_acceso.html
 
@@ -19,12 +14,12 @@ Ejercicio 9 (2 puntos)
 
 Despliega el proyecto en un hosting por ejemplo clouding.io.
 
-- En primer lugar realiza la instalación de symfony mediante el instalador automático, indicando un nombre de carpeta para alojar los archivos. Por ejemplo carpeta symfony.
+- En primer lugar realiza la instalaciï¿½n de symfony mediante el instalador automï¿½tico, indicando un nombre de carpeta para alojar los archivos. Por ejemplo carpeta symfony.
 
-- Modifica el archivo de configuración para que se conecte a la base de datos y credenciales (usuario/password).
+- Modifica el archivo de configuraciï¿½n para que se conecte a la base de datos y credenciales (usuario/password).
 
 - Sube a la carpeta src la carpeta con archivos modificados de alimentos. 
 
-- Añade en el archivo  en el routing.yml las entradas necesarias para que funcione el bundle
+- Aï¿½ade en el archivo  en el routing.yml las entradas necesarias para que funcione el bundle
 
-Por último prueba el acceso y que funcionan correctamente todos los apartados.
+Por ï¿½ltimo prueba el acceso y que funcionan correctamente todos los apartados.

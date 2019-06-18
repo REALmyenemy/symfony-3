@@ -155,9 +155,7 @@
 				$sql = "insert into alimentos
 				(nombre,		energia,	 proteina, hidratocarbono, fibra, grasatotal, calificacion) values
 				('" .$n . "'," .$e . "," .  $p . "," . $hc . "," .     $f . "," . $g . ",'" . "$c"."')";
-				$sql = "insert into alimentos
-				(nombre,		energia,	 proteina, hidratocarbono, fibra, grasatotal, calificacion) values
-				('aaa',1,2,3,4,5,'a')";
+				
 
 				$result = mysqli_query($this->conexion,$sql);
 
